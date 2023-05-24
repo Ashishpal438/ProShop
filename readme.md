@@ -1,7 +1,7 @@
 # Ecommerce-MERN
 Full-Stack Ecommerce with Admin Dashboard & PayPal Payment Gateway.
 
-[Visit Now](https://flipkartwebs.herokuapp.com/) 🚀
+<!-- [Visit Now](https://flipkartwebs.herokuapp.com/) 🚀 -->
 
 ## 🖥️ Tech Stack
 **Frontend:**
