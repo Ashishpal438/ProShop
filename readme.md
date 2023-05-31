@@ -24,7 +24,7 @@ Full-Stack Ecommerce with Admin Dashboard & PayPal Payment Gateway.
 
 **Deployed On:**
 
-![heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+![heroku](https://img.shields.io/badge/Render-430098?style=for-the-badge&logo=render&logoColor=white)
 
 ## 🚀 Features
 - Login/Signup User Account
