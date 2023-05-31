@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
@@ -7,14 +8,9 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import cors from "cors"
-import path from "path"
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import cors from "cors";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const __dirname = path.resolve();
 
 dotenv.config();
 
@@ -24,7 +20,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors())
+app.use(cors());
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
