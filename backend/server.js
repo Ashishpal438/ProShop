@@ -7,6 +7,14 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import cors from "cors"
+import path from "path"
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 dotenv.config();
 
@@ -16,9 +24,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+app.use(cors())
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
@@ -29,14 +35,16 @@ app.get("/api/config/paypal", (req, res) =>
 );
 
 if (process.env.NODE_ENV === "production") {
+  //set static folder
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
+  //any route that is not api will be redirected to index.html
   app.get("*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
-    res.send("API is running.....");
+    res.send("API is running...");
   });
 }
 

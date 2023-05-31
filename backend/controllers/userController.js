@@ -105,5 +105,40 @@ const upateUserProfile = asyncHandler(async (req, res) => {
 });
 
 
+// @desc  GET all users
+// @route GET /api/users
+// @access Private/Admin
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.json(users);
+});
 
-export { authUser, getUserProfile, registerUser, upateUserProfile };
+
+// @desc  Delete a user
+// @route DELTE /api/users/:id
+// @access Private/Admin
+const deleteUser = asyncHandler(async (req, res) => {
+  console.log('re', req.params)
+  const user = await User.findById(req.params.id);
+  console.log(user)
+  if(user){
+    await User.remove();
+    res.json({message: "User deleted"})
+  }
+  else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+
+
+
+export {
+  authUser,
+  getUserProfile,
+  registerUser,
+  upateUserProfile,
+  getUsers,
+  deleteUser,
+};
